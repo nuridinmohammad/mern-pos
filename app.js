@@ -9,7 +9,7 @@ const cors = require("cors");
 const cors_option = require("./configs/cors.option");
 const indexRouter = require("./routes/index");
 const authRouter = require("./app/auth/auth.route");
-// const productRouter = require("./app/product/product.route");
+const productRouter = require("./app/product/product.route");
 
 const app = express();
 // view engine setup
@@ -28,7 +28,7 @@ app.use("/", indexRouter);
 
 // api
 app.use("/api/v1", authRouter);
-// app.use("/api/v1", productRouter);
+app.use("/api/v1", productRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
