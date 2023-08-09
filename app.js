@@ -10,6 +10,7 @@ const cors_option = require("./configs/cors.option");
 const indexRouter = require("./routes/index");
 const authRouter = require("./app/auth/auth.route");
 const productRouter = require("./app/product/product.route");
+const decodeToken = require("./middlewares");
 
 const app = express();
 // view engine setup
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(decodeToken())
 
 // home
 app.use("/", indexRouter);
